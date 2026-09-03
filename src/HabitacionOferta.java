@@ -1,13 +1,13 @@
 public class HabitacionOferta extends Habitacion implements Cuartos{
 
 public HabitacionOferta(
-        String codigohabitacion,
-        String nombre,
+        String codigohabitacion,,
         double tarifa,
-        int diasReserva
+        int diasReserva,
+        int porcDescuento
 ) throws TarifaNegativaException {
 
-    super(codigohabitacion, nombre, tarifa, diasReserva);
+    super(codigohabitacion, porcDescuento, tarifa, diasReserva);
 
     if (diasReserva <= 0) {
         throw new IllegalArgumentException(
@@ -39,6 +39,13 @@ public void revisarEstado() {
         System.out.println(
                 "AVISO: puede continuar con el registro"
         );
+
+        if  (tarifa <= 0)
+
+            System.out.println(
+                    "De donde sacaste tarifas negativas?, NO SE PUEDE GENERAR EL CARGO"
+            );
+
 
         @Override
         public void vender(int cantidad)

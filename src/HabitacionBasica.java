@@ -1,10 +1,9 @@
 public class HabitacionBasica extends Habitacion implements Cuartos {
 
     public HabitacionBasica(
-            String codigohabitacion,
-            String nombre,
+            String codigohabitacion,,
             double tarifa,
-            int diasReserva
+            int diasreserva
     ) throws TarifaNegativaException {
 
         super(codigohabitacion, nombre, tarifa, diasReserva);
@@ -27,8 +26,9 @@ public class HabitacionBasica extends Habitacion implements Cuartos {
     public void revisarEstado() {
 
         int diasReserva = (-2);
+        double tarifa = (tarifa);
 
-        if (diasReserva == -2) {
+        if (diasReserva <= 0) {
 
             System.out.println(
                    " No se puede registrar con una cantidad de noches negativas"
@@ -39,6 +39,12 @@ public class HabitacionBasica extends Habitacion implements Cuartos {
             System.out.println(
                     "AVISO: puede continuar con el registro"
             );
+        if  (tarifa <= 0)
+
+            System.out.println(
+                    "De donde sacaste tarifas negativas?, NO SE PUEDE GENERAR EL CARGO"
+            );
+
 
     @Override
     public void vender(int cantidad)

@@ -3,8 +3,7 @@ import java.util.Objects;
 public abstract class Habitacion {
 
     private String codigohabitacion;
-    private String nombre;
-    private double tarifa;
+    public double tarifa;
     protected int cantidadDisponible;
 
     private static int cantidadHabitaciones = 0;
