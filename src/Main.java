@@ -86,5 +86,3 @@ public class Main {
                     1,
                     0,
                     );
-
-            System.out.println("=== INVENTARIO ===");
