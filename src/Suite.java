@@ -1,0 +1,1 @@
+public class Suite extends Habitacion implements Cuartos
