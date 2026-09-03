@@ -2,7 +2,7 @@ import java.util.Objects;
 
 public abstract class Habitacion {
 
-    private String codigo;
+    private String codigohabitacion;
     private String nombre;
     private double tarifa;
     protected int cantidadDisponible;
@@ -16,7 +16,7 @@ public abstract class Habitacion {
             throw new TarifaNegativaException("La tarifa no puede ser negativa");
         }
 
-        this.codigo = codigo;
+        this.codigohabitacion = codigohabitacion;
         this.nombre = nombre;
         this.tarifa = tarifa;
         this.cantidadDisponible = cantidadDisponible;
@@ -32,7 +32,7 @@ public abstract class Habitacion {
 
     // Método concreto
     public void mostrarInformacion() {
-        System.out.println("Código: " + codigo);
+        System.out.println("Código: " + codigohabitacion);
         System.out.println("Nombre: " + nombre);
         System.out.println("Precio: $" + tarifa);
         System.out.println("Cantidad: " + cantidadDisponible);

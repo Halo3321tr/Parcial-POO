@@ -1,15 +1,13 @@
-import java.time.LocalDate;
-
 public class HabitacionBasica extends Habitacion implements Cuartos {
 
     public HabitacionBasica(
-            String codigo,
+            String codigohabitacion,
             String nombre,
             double tarifa,
             int diasReserva
     ) throws TarifaNegativaException {
 
-        super(codigo, nombre, tarifa, diasReserva);
+        super(codigohabitacion, nombre, tarifa, diasReserva);
 
         if (diasReserva <= 0) {
             throw new IllegalArgumentException(
@@ -20,40 +18,27 @@ public class HabitacionBasica extends Habitacion implements Cuartos {
         this.diasReserva = diasReserva;
     }
 
-    public LocalDate getdiasReserva() {
+    public int getdiasReserva() {
         return diasReserva;
     }
 
-    private boolean estaVencido() {
-        return !fechaVencimiento.isAfter(LocalDate.now());
-    }
 
     @Override
     public void revisarEstado() {
 
-        LocalDate hoy = LocalDate.now();
-        LocalDate limite = hoy.plusDays(3);
+        int diasReserva = (-2);
 
-        if (estaVencido()) {
-
-            System.out.println(
-                    getNombre() + " está VENCIDO"
-            );
-
-        } else if (!fechaVencimiento.isAfter(limite)) {
+        if (diasReserva == -2) {
 
             System.out.println(
-                    "AVISO: " + getNombre() +
-                            " está próximo a vencerse"
+                   " No se puede registrar con una cantidad de noches negativas"
             );
 
-        } else {
+        } else() {
 
             System.out.println(
-                    getNombre() + " está en buen estado"
+                    "AVISO: puede continuar con el registro"
             );
-        }
-    }
 
     @Override
     public void vender(int cantidad)
@@ -67,21 +52,11 @@ public class HabitacionBasica extends Habitacion implements Cuartos {
             );
         }
 
-        if (estaVencido()) {
+        if (diasReserva < 0) {
 
-            throw new ProductoVencidoException(
-                    "No se puede vender " +
-                            getNombre() +
-                            " porque está vencido"
-            );
+            throw new NochesNegativasException(
+                    "No se puede vender pues está ingresando un numero invalidode dias para reservar "
         }
 
-        descontarStock(cantidad);
-    }
 
-    @Override
-    public String toString() {
-        return super.toString()
-                + " - Vence: "
-                + fechaVencimiento;
     }
